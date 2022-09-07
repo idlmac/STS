@@ -28,7 +28,6 @@ public class EmpTest {
 		}
 	}
 
-	@Test
 	public void empInfoTest() {
 		EmpVO info = new EmpVO();
 		info.setEmployeeId("207");
@@ -36,16 +35,17 @@ public class EmpTest {
 		assertNotNull(findVO.getEmail());
 	}
 
+	@Test
 	public void empInsertTest() {
 		EmpVO info = new EmpVO();
-		info.setFirstName("멍중");
+		info.setFirstName("멍중이");
 		info.setLastName("어");
-		info.setEmail("djdwnd@jdbc1.com");
+		info.setEmail("dj1dw1nd@j1db1c1.com");
 		info.setHireDate("SYSDATE");
 		info.setJobId("IT_PROG");
 		info.setSalary("20000");
 		System.out.println(empMapper.insertEmp(info));
-		assertEquals(info.getEmployeeId(), "207");
+		assertEquals(info.getEmployeeId(), "209");
 	}
 
 	public void empUpdateTest() {
@@ -53,11 +53,11 @@ public class EmpTest {
 		assertEquals(result, 1);
 	}
 
-	public void empDeleteTest() {
-		EmpVO info = new EmpVO();
-		info.setEmployeeId("208");
-		empMapper.deleteEmp(info);
-	}
+//	public void empDeleteTest() {
+//		EmpVO info = new EmpVO();
+//		info.setEmployeeId("208");
+//		empMapper.deleteEmp(info);
+//	}
 
 	public void empUpdate() {
 		EmpVO info = new EmpVO();

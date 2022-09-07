@@ -26,5 +26,4 @@ public class EmpMapperClient {
 		System.out.println(findVO.getLastName());
 		assertEquals(findVO.getLastName(), "King");
 	}
-
 }

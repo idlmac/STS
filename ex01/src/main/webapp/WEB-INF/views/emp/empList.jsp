@@ -19,6 +19,7 @@ td {
 <body>
 	<c:set var="vo" value="empVO" />
 	<table>
+		<button type="button" onclick="location.href='empInfo'">등록</button>
 		<tr>
 			<th>사원번호</th>
 			<th>이름</th>
@@ -27,10 +28,11 @@ td {
 			<th>부서</th>
 			<th>연봉</th>
 			<th>입사일자</th>
+			<th>DELETE</th>
 		</tr>
 		<tbody>
 			<c:forEach items="${empList}" var="emp">
-				<tr>
+				<tr onclick="location.href='getInfo?employeeId=${emp.employeeId}'">
 					<td>${emp.employeeId }</td>
 					<td>${emp.lastName }</td>
 					<td>${emp.firstName }</td>
@@ -38,11 +40,20 @@ td {
 					<td>${emp.jobId }</td>
 					<td>${emp.salary }</td>
 					<td>${emp.hireDate }</td>
+					<td><button type="button"
+							onclick="deleteInfo(${emp.employeeId}, event)">삭제</button></td>
 				</tr>
 			</c:forEach>
+
 		</tbody>
 		<tr>
 		</tr>
 	</table>
+	<script>
+		function deleteInfo(id, event){
+			event.stopPropagation();
+			location.href='deleteInfo/'+id;
+		}
+	</script>
 </body>
 </html>

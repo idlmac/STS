@@ -11,18 +11,8 @@
 			job_id = #{jobId} </where> -->
 	</select>
 	<select id="getEmp" parameterType="EmpVO" resultType="EmpVO">
-		SELECT
-		employee_id,
-		first_name,
-		last_name,
-		<if test="!employeeId.equals('100')">
-			email,
-		</if>
-		hire_date,
-		job_id,
-		salary
-		FROM
-		employees
+		SELECT *
+		FROM employees
 		WHERE employee_id = #{employeeId}
 	</select>
 
@@ -49,7 +39,7 @@
 	</update>
 
 	<!-- 사원 정보 삭제 -->
-	<delete id="deleteEmp" parameterType="EmpVO">
+	<delete id="deleteEmp" parameterType="Integer">
 		DELETE FROM employees
 		WHERE
 		employee_id = #{employeeId}

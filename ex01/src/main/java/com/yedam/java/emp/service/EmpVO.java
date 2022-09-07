@@ -8,8 +8,11 @@ public class EmpVO {
 	String firstName;
 	String lastName;
 	String email;
+	String phoneNumber;
 	String jobId;
 	String hireDate;
 	String salary;
 	String departmentId;
+	String commissionPct;
+	String managerId;
 }
