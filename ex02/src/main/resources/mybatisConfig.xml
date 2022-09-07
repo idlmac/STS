@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+		<setting name="jdbcTypeForNull" value="VARCHAR"></setting>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.yedam.java.emp.mapper.EmpMapper" alias="EmpMapper"></typeAlias>
+		<!-- package는 bean을 이용해서 찾는다 -> 컨테이너에 등록된 빈이어야한다. -->
+		<!-- @conponent없는 것은 직접 typeAlias로 등록해줘야한다. -->
+		<package name="com.yedam.java.emp.service"/>
+		<package name="com.yedam.java.board.service"/>
+	</typeAliases>
+	<typeHandlers>
+		<!-- java.sql.Timestamp를 java.util.Date 형으로 변환 -->
+		<typeHandler javaType="java.sql.Date" handler="org.apache.ibatis.type.DateTypeHandler"/>
+	</typeHandlers>
+</configuration>
