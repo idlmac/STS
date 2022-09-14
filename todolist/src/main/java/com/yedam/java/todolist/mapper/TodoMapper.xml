@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.java.todolist.mapper.TodoMapper">
+
+	<select id="getNo" resultType="TodoVO">
+		SELECT NVL(MAX(no), 0) +1 as no FROM todo
+	</select>
+
+	<select id="getList" resultType="TodoVO">
+		SELECT *
+		FROM todo
+		ORDER BY no
+	</select>
+
+	<insert id="insertList" parameterType="TodoVO">
+	<selectKey keyProperty="no" order="BEFORE" resultType="int">
+		SELECT NVL(MAX(no), 0) +1 as no FROM todo
+	</selectKey>
+		INSERT INTO todo (
+							no,
+							id,
+							contents
+						 )
+				  VALUES (
+				  			#{no}
+				  			,#{id}
+				  			,#{contents}
+				  		 )
+	</insert>
+
+	<update id="updateList" parameterType="TodoVO">
+		UPDATE todo
+		<set>
+			<if test="id != null and !id.equals('')">
+				id = #{id},
+			</if>
+			<if test="contents != null and !contents.equals('')">
+				contents = #{contents},
+			</if>
+			<if test="todoyn != null and !todoyn.equals('')">
+				todoyn = #{todoyn},
+			</if>
+		</set>
+		WHERE no = #{no}
+	</update>
+	
+	<delete id="deleteList" parameterType="TodoVO">
+		DELETE FROM todo
+		WHERE no = #{no}
+	</delete>
+</mapper>
